@@ -10,10 +10,14 @@ import { ProdutosService } from '../shared/services/produtos.service';
 export class ListagemProdutoComponent implements OnInit {
   produtos: Array<Produto> = [];
   totalizador = 0;
+  carregado = false;
 
   constructor(private produtosService: ProdutosService) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this.carregado = true;
+    }, 1000);
     this.produtosService.listarProdutos().subscribe((retorno) => {
       this.produtos = retorno;
     });
